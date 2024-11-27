@@ -49,61 +49,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 
     <form method="POST">
-    <label>
-        Placa:
-        <input type="text" name="placa" 
-            value="<?php echo isset($vehiculo['placa']) ? htmlspecialchars($vehiculo['placa']) : ''; ?>" 
-            required>
-    </label><br>
-    
-    <label>
-        Tipo de vehículo:
-        <input type="text" name="tipo" 
-            value="<?php echo isset($vehiculo['tipo']) ? htmlspecialchars($vehiculo['tipo']) : ''; ?>" 
-            required>
-    </label><br>
-    
-    <label>
-        Color:
-        <input type="text" name="color" 
-            value="<?php echo isset($vehiculo['color']) ? htmlspecialchars($vehiculo['color']) : ''; ?>" 
-            required>
-    </label><br>
-    
-    <label>
-        Fecha de entrada:
-        <input type="date" name="f_entrada" 
-            value="<?php echo isset($vehiculo['f_entrada']) ? $vehiculo['f_entrada'] : ''; ?>" 
-            required>
-    </label><br>
-    
-    <label>
-        Hora de entrada:
-        <input type="time" name="h_entrada" 
-            value="<?php echo isset($vehiculo['h_entrada']) ? $vehiculo['h_entrada'] : ''; ?>" 
-            required>
-    </label><br>
-    
-    <label>
-        Fecha de salida:
-        <input type="date" name="f_salida" 
-            value="<?php echo isset($vehiculo['f_salida']) ? $vehiculo['f_salida'] : ''; ?>">
-    </label><br>
-    
-    <label>
-        Hora de salida:
-        <input type="time" name="h_salida" 
-            value="<?php echo isset($vehiculo['h_salida']) ? $vehiculo['h_salida'] : ''; ?>">
-    </label><br>
-    
-    <label>
-        Completada:
-        <input type="checkbox" name="completada" 
-            <?php echo isset($vehiculo['completada']) && $vehiculo['completada'] ? 'checked' : ''; ?>>
-    </label><br>
-    
-    <button type="submit" class="button">Actualizar Registro</button>
-</form>
+        <label>Placa: <input type="text" name="placa" value="<?php echo htmlspecialchars($vehiculo['placa']); ?>" required></label><br>
+        <label>Tipo de vehiculo: <input type="text" name="tipo" value="<?php echo htmlspecialchars($vehiculo['tipo']); ?>" required></label><br>
+        <label>Color: <input type="text" name="color" value="<?php echo htmlspecialchars($vehiculo['color']); ?>" required></label><br>
+
+        <label>
+            Fecha de entrada:
+            <input type="date" name="f_entrada"
+                value="<?php echo isset($vehiculo['f_entrada']) ? date('Y-m-d', strtotime($vehiculo['f_entrada'])) : ''; ?>">
+        </label><br>
+
+
+        <label>
+            Hora de entrada:
+            <input type="time" name="h_entrada"
+                value="<?php echo isset($vehiculo['h_entrada']) ? date('H:i', strtotime($vehiculo['h_entrada'])) : ''; ?>">
+        </label><br>
+
+        <label>
+            Fecha de salida:
+            <input type="date" name="f_salida"
+                value="<?php echo isset($vehiculo['f_salida']) ? date('Y-m-d', strtotime($vehiculo['f_salida'])) : ''; ?>">
+        </label><br>
+
+
+        <label>
+            Hora de salida:
+            <input type="time" name="h_salida"
+                value="<?php echo isset($vehiculo['h_salida']) ? date('H:i', strtotime($vehiculo['h_salida'])) : ''; ?>">
+        </label><br>
+
+        <label>Completada: <input type="checkbox" name="completada" <?php echo $vehiculo['completada'] ? 'checked' : ''; ?>></label><br>
+
+        <button type="submit" class="button">Actualizar Registro</button>
+    </form>
 
 
     <a href="index.php">Volver a la lista de vehiculos</a>
